@@ -1,0 +1,59 @@
+---
+interface Props {
+  href: string;
+  titolo: string;
+  data?: Date;
+  luogo?: string;
+  immagine?: string;
+}
+const { href, titolo, data, luogo, immagine } = Astro.props;
+
+const dataFormattata = data
+  ? data.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })
+  : undefined;
+---
+
+<a class="evento-card" href={href}>
+  {immagine && <img src={immagine} alt="" />}
+  <div class="evento-card__testo">
+    <h3>{titolo}</h3>
+    {dataFormattata && <p class="evento-card__meta">{dataFormattata}</p>}
+    {luogo && <p class="evento-card__meta">{luogo}</p>}
+  </div>
+</a>
+
+<style>
+  .evento-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--color-surface);
+    transition: border-color 0.15s ease;
+  }
+  .evento-card:hover {
+    border-color: var(--color-accent);
+  }
+  .evento-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+  .evento-card__testo {
+    padding: 16px 18px;
+  }
+  .evento-card h3 {
+    font-family: var(--font-body);
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+  .evento-card__meta {
+    font-size: 13px;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+</style>

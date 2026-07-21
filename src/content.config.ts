@@ -8,4 +8,14 @@ const pagine = defineCollection({
   }),
 });
 
-export const collections = { pagine };
+const eventi = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/eventi' }),
+  schema: z.object({
+    titolo: z.string(),
+    data: z.coerce.date().optional(),
+    luogo: z.string().optional(),
+    immagine: z.string().optional(),
+  }),
+});
+
+export const collections = { pagine, eventi };

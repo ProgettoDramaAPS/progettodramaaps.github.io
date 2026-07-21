@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import EventoCard from '../../components/eventi/EventoCard.astro';
+
+const tutti = await getCollection('eventi');
+const oggi = new Date();
+
+// Un evento senza data resta tra i "prossimi" finché non gli viene data una data:
+// non possiamo sapere se è passato o no, quindi non lo archiviamo mai da soli.
+const prossimi = tutti
+  .filter((e) => !e.data.data || e.data.data >= oggi)
+  .sort((a, b) => {
+    if (!a.data.data) return -1;
+    if (!b.data.data) return 1;
+    return a.data.data.getTime() - b.data.data.getTime();
+  });
+
+const archivio = tutti
+  .filter((e) => e.data.data && e.data.data < oggi)
+  .sort((a, b) => b.data.data!.getTime() - a.data.data!.getTime());
+---
+
+<Layout titolo="Eventi">
+  <h1>Eventi</h1>
+
+  <section>
+    <h2>Prossimi</h2>
+    {prossimi.length === 0 && <p class="vuoto">Nessun evento in programma per ora.</p>}
+    <div class="griglia">
+      {prossimi.map((entry) => (
+        <EventoCard
+          href={`/eventi/${entry.id}`}
+          titolo={entry.data.titolo}
+          data={entry.data.data}
+          luogo={entry.data.luogo}
+          immagine={entry.data.immagine}
+        />
+      ))}
+    </div>
+  </section>
+
+  {archivio.length > 0 && (
+    <section>
+      <h2>Archivio</h2>
+      <div class="griglia">
+        {archivio.map((entry) => (
+          <EventoCard
+            href={`/eventi/${entry.id}`}
+            titolo={entry.data.titolo}
+            data={entry.data.data}
+            luogo={entry.data.luogo}
+            immagine={entry.data.immagine}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+</Layout>
+
+<style>
+  section {
+    margin-bottom: 48px;
+  }
+  h2 {
+    font-size: 22px;
+    margin: 0 0 16px;
+  }
+  .vuoto {
+    color: var(--color-ink-muted);
+  }
+  .griglia {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+</style>

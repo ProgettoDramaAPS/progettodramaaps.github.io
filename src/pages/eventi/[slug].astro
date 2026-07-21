@@ -1,0 +1,48 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const eventi = await getCollection('eventi');
+  return eventi.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const dataFormattata = entry.data.data
+  ? entry.data.data.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })
+  : undefined;
+---
+
+<Layout titolo={entry.data.titolo}>
+  <p><a href="/eventi">&larr; Tutti gli eventi</a></p>
+
+  <h1>{entry.data.titolo}</h1>
+  {dataFormattata && <p class="meta">{dataFormattata}</p>}
+  {entry.data.luogo && <p class="meta">{entry.data.luogo}</p>}
+  {entry.data.immagine && <img class="immagine" src={entry.data.immagine} alt="" />}
+
+  <div class="contenuto">
+    <Content />
+  </div>
+</Layout>
+
+<style>
+  .meta {
+    color: var(--color-ink-muted);
+    margin: 0 0 4px;
+  }
+  .immagine {
+    display: block;
+    width: 100%;
+    border-radius: var(--radius);
+    margin: 20px 0;
+  }
+  .contenuto {
+    margin-top: 24px;
+  }
+</style>
