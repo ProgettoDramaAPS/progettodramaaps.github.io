@@ -46,3 +46,17 @@ Stato del lavoro, aggiornato ad ogni sessione. Cosa è stato fatto, cosa è in c
   senza data resta tra i prossimi finché non gliene si dà una) e pagina singola
   `/eventi/<slug>`. Aggiunti 3 eventi di esempio (uno futuro, uno passato, uno
   senza data) per mostrare i tre casi. "Eventi" aggiunto al menu, link dalla Home.
+  Paolo ha modificato lui stesso un evento e ne ha aggiunto uno nuovo, con successo
+  (dopo aver imparato i comandi git add/commit/push — vedi .claude/come-pubblicare.md).
+- **Fase 5 completata**: prenotazione evento, backend nuovo e separato da quello
+  iscrizioni (Sheet ID `1IX6Es-TGWN31x1gVIdw9m482YZSniflsWLBRlekHmuc`, Apps Script
+  proprio in `sito/apps-script/prenotazioni/`, deployment funzionante creato
+  dall'editor Apps Script — vedi memoria esterna e lessons.md per i dettagli e per
+  il problema clasp incontrato). Un evento diventa prenotabile con
+  `prenotabile: true` nel frontmatter; `postiMax` opzionale attiva il controllo
+  posti (via richiesta GET all'endpoint, lato client, prima di mostrare il modulo).
+  Prenotazioni chiuse da sole per eventi passati. Testato end-to-end con dati
+  finti (scrittura e lettura confermate).
+  **Testo di consenso privacy nel modulo segnato come provvisorio**: da NON
+  rendere pubblico su un evento reale finché il direttivo non aggiorna
+  l'informativa privacy generale (vedi SPEC.md, sezione "Da segnalare").

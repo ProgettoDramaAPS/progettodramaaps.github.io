@@ -3,7 +3,6 @@
 Elenco di cosa c'è da fare. Spuntare quando fatto, non cancellare le righe.
 
 ## Da fare
-- [ ] Prenotazione evento: nuovo Sheet, nuovo endpoint Apps Script, form separato
 - [ ] Pagina Documenti (Statuto, Atto costitutivo, Informativa privacy)
 - [ ] Deploy automatico via GitHub Actions su GitHub Pages
 - [ ] GoatCounter per le statistiche
@@ -19,3 +18,6 @@ Elenco di cosa c'è da fare. Spuntare quando fatto, non cancellare le righe.
 - [x] Fase 3 — pagina /iscrizioni ricostruita fedelmente, componenti condivisi
       creati, testata in locale, pubblicata (vecchio repo `iscrizioni` disattivato)
 - [x] Fase 4 — eventi (Markdown, elenco prossimi/archivio automatico, pagina singola)
+- [x] Fase 5 — prenotazione evento (Sheet/endpoint separati, posti limitati opzionali)
+      — testo privacy provvisorio, NON pubblicare su eventi reali finché il
+      direttivo non aggiorna l'informativa

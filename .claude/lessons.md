@@ -33,3 +33,26 @@ invece di interrompere Paolo per ognuna. Se una scelta va rivista, si cambia qui
   pubblica comunque spesso. Se in futuro servisse l'aggiornamento automatico anche
   senza push, servirebbe un'azione GitHub schedulata — non richiesta ora, da
   proporre solo se serve davvero.
+
+## Fase 5 — prenotazione evento
+- **Bug scoperto con clasp**: un deployment Apps Script creato via `clasp create-deployment`
+  (API), pur con `"webapp": {"access": "ANYONE_ANONYMOUS", ...}` corretto nel manifest
+  `appsscript.json`, risultava comunque "Accesso negato" per chi non è loggato — anche
+  dopo redeploy, anche col manifest confermato giusto nell'interfaccia. Soluzione che ha
+  funzionato: creare il deployment manualmente dall'editor Apps Script (Deploy > Nuova
+  implementazione > Web app > Chiunque). Il deployment "buono" da usare è quello con
+  quell'origine; quello creato da clasp è stato cancellato. **Non fidarsi delle
+  implementazioni create da clasp per l'accesso pubblico: verificare sempre con una
+  richiesta anonima (incognito o curl) prima di considerarle pronte.**
+- Il conteggio posti funziona con una richiesta GET normale (fetch, mode cors) dal
+  browser verso l'endpoint Apps Script: il redirect automatico verso
+  script.googleusercontent.com include `Access-Control-Allow-Origin: *`, quindi la
+  risposta è leggibile. L'invio (POST) resta invece in `mode: 'no-cors'`, senza
+  poter leggere la risposta — stessa scelta già fatta per le iscrizioni.
+- Codice del backend versionato in `sito/apps-script/prenotazioni/` (clasp), a
+  differenza del backend iscrizioni che non ha mai avuto un sorgente tracciato
+  da nessuna parte (probabilmente scritto a mano nell'editor online).
+- Il testo di consenso privacy nel modulo prenotazione è VOLUTAMENTE segnato come
+  "provvisorio, non pubblicare": non è un contenuto che decido io, va scritto dal
+  direttivo e aggiunto all'informativa generale prima che un evento reale abbia
+  `prenotabile: true`.
