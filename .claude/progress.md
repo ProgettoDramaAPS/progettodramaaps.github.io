@@ -34,5 +34,8 @@ Stato del lavoro, aggiornato ad ogni sessione. Cosa è stato fatto, cosa è in c
   usando componenti condivisi in `src/components/form/`. Non abbiamo toccato
   l'Apps Script: endpoint invariato. La pagina è nel repo ma NON ancora
   raggiungibile in produzione (oscurata dal vecchio repo `iscrizioni`, vedi sopra).
-  Prossimo passo: test in locale con dati finti, poi — solo con l'ok esplicito di
-  Paolo — disattivare il repo/project page `iscrizioni` per liberare il path.
+  Test in locale confermato funzionante da Paolo.
+- **Cutover completato**: disattivata la pubblicazione (GitHub Pages) del repo
+  `ProgettoDramaAPS/iscrizioni` (repo non cancellato, solo Pages spenta — reversibile).
+  Verificato che https://progettodramaaps.github.io/iscrizioni/ ora serve la pagina
+  nuova (status 200, stessi campi, stesso endpoint). **Fase 3 completata.**

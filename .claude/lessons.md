@@ -21,3 +21,6 @@ invece di interrompere Paolo per ognuna. Se una scelta va rivista, si cambia qui
 - Ho copiato testo legale (dichiarazione + informativa privacy) e nomi dei campi
   parola per parola dal modulo attuale, senza parafrasare: sono testi legalmente
   rilevanti, non contenuti discrezionali.
+- Cutover eseguito disattivando SOLO le GitHub Pages del repo `iscrizioni`
+  (`DELETE repos/.../pages` via gh api), senza cancellare il repo: resta lì come
+  backup silenzioso, riattivabile in un minuto in caso di problemi.
