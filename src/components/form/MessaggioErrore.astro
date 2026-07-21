@@ -1,0 +1,20 @@
+---
+interface Props {
+  id?: string;
+  testo?: string;
+}
+const { id = 'form-error', testo = 'Qualcosa è andato storto. Controlla i campi e riprova.' } = Astro.props;
+---
+
+<div class="form-msg" id={id} style="display: none;">{testo}</div>
+
+<style>
+  .form-msg {
+    font-size: 14px;
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    background: #fbebe8;
+    color: var(--color-error);
+  }
+</style>

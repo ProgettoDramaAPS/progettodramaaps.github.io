@@ -1,0 +1,33 @@
+---
+interface Props {
+  id?: string;
+  testo?: string;
+}
+const { id = 'submit-btn', testo = 'Invia' } = Astro.props;
+---
+
+<button type="submit" id={id}>{testo}</button>
+
+<style>
+  button[type='submit'] {
+    width: 100%;
+    padding: 16px 24px;
+    font-family: var(--font-display);
+    font-size: 17px;
+    letter-spacing: 0.02em;
+    font-weight: 600;
+    color: var(--color-surface);
+    background: var(--color-ink);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+  button[type='submit']:hover {
+    opacity: 0.85;
+  }
+  button[type='submit']:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+</style>

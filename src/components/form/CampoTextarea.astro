@@ -1,0 +1,51 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  label: string;
+  optional?: boolean;
+}
+const { id, name, label, optional = false } = Astro.props;
+---
+
+<div class="campo">
+  <label for={id}>
+    {label}
+    {optional && <span class="facoltativo"> (facoltativo)</span>}
+  </label>
+  <textarea id={id} name={name}></textarea>
+</div>
+
+<style>
+  .campo {
+    margin-bottom: 20px;
+  }
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .facoltativo {
+    font-weight: 400;
+    color: var(--color-ink-muted);
+  }
+  textarea {
+    width: 100%;
+    padding: 11px 14px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-ink);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color 0.15s ease;
+  }
+  textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-soft);
+  }
+</style>

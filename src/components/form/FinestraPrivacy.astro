@@ -1,0 +1,161 @@
+---
+interface Props {
+  id: string;
+  checkboxId: string;
+  titolo?: string;
+}
+const { id, checkboxId, titolo = 'Informativa sul trattamento dei dati personali' } = Astro.props;
+---
+
+<dialog class="privacy-dialog" id={id}>
+  <div class="privacy-dialog__inner">
+    <div class="privacy-dialog__head">
+      <h2>{titolo}</h2>
+      <button type="button" class="privacy-dialog__close" id={`${id}-close`} aria-label="Chiudi">&times;</button>
+    </div>
+
+    <div class="privacy-content">
+      <slot />
+    </div>
+
+    <div class="privacy-dialog__actions">
+      <button type="button" class="btn-accept" id={`${id}-accept`}>Ho letto e accetto</button>
+    </div>
+  </div>
+</dialog>
+
+<script define:vars={{ dialogId: id, checkboxId }}>
+  const dialog = document.getElementById(dialogId);
+  const closeBtn = document.getElementById(`${dialogId}-close`);
+  const acceptBtn = document.getElementById(`${dialogId}-accept`);
+  const checkbox = document.getElementById(checkboxId);
+
+  function mostra() {
+    if (typeof dialog.showModal === 'function') dialog.showModal();
+    else dialog.setAttribute('open', '');
+  }
+  function nascondi() {
+    if (typeof dialog.close === 'function') dialog.close();
+    else dialog.removeAttribute('open');
+  }
+
+  closeBtn.addEventListener('click', nascondi);
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog) nascondi();
+  });
+  document.querySelectorAll(`[data-apri-privacy="${dialogId}"]`).forEach((el) => {
+    el.addEventListener('click', mostra);
+  });
+  acceptBtn.addEventListener('click', () => {
+    if (checkbox) checkbox.checked = true;
+    nascondi();
+  });
+</script>
+
+<style>
+  .privacy-dialog {
+    border: none;
+    border-radius: var(--radius);
+    padding: 0;
+    max-width: 560px;
+    width: calc(100% - 32px);
+    max-height: 85vh;
+    overflow: hidden;
+    background: var(--color-surface);
+    color: var(--color-ink);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  }
+  .privacy-dialog::backdrop {
+    background: rgba(26, 26, 24, 0.55);
+  }
+  .privacy-dialog__inner {
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+  }
+  .privacy-dialog__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--color-border);
+    flex-shrink: 0;
+  }
+  .privacy-dialog__head h2 {
+    font-size: 20px;
+    margin: 0;
+    line-height: 1.15;
+  }
+  .privacy-dialog__close {
+    background: none;
+    border: none;
+    font-size: 26px;
+    line-height: 1;
+    color: var(--color-ink-muted);
+    cursor: pointer;
+    padding: 0 4px;
+    flex-shrink: 0;
+  }
+  .privacy-dialog__close:hover {
+    color: var(--color-ink);
+  }
+  .privacy-content {
+    overflow-y: auto;
+    padding: 20px 24px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .privacy-content :global(h3) {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 22px 0 6px;
+  }
+  .privacy-content :global(h3:first-child) {
+    margin-top: 0;
+  }
+  .privacy-content :global(p) {
+    margin: 0 0 10px;
+  }
+  .privacy-content :global(ul) {
+    margin: 0 0 10px;
+    padding-left: 20px;
+  }
+  .privacy-content :global(li) {
+    margin-bottom: 5px;
+  }
+  .privacy-content :global(a) {
+    color: var(--color-accent);
+  }
+  .privacy-content :global(.meta) {
+    font-size: 12px;
+    color: var(--color-ink-muted);
+    font-style: italic;
+    margin-top: 20px;
+  }
+  .privacy-dialog__actions {
+    padding: 16px 24px;
+    border-top: 1px solid var(--color-border);
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .btn-accept {
+    padding: 11px 20px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-surface);
+    background: var(--color-accent);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+  .btn-accept:hover {
+    opacity: 0.9;
+  }
+</style>

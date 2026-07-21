@@ -1,0 +1,28 @@
+---
+interface Props {
+  id?: string;
+  titolo: string;
+  testo: string;
+}
+const { id = 'success-panel', titolo, testo } = Astro.props;
+---
+
+<div class="success-panel" id={id} style="display: none;">
+  <h2>{titolo}</h2>
+  <p>{testo}</p>
+</div>
+
+<style>
+  .success-panel {
+    text-align: center;
+    padding: 48px 24px;
+  }
+  .success-panel h2 {
+    font-size: 28px;
+    margin: 0 0 12px;
+  }
+  .success-panel p {
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap');
+
+/* ============================================
+   TOKEN DI STILE — identità visiva Drama, condivisa
+   da tutte le pagine e da tutti i moduli del sito.
+   ============================================ */
+:root {
+  --color-bg: #FAFAF8;
+  --color-surface: #FFFFFF;
+  --color-ink: #1A1A18;
+  --color-ink-muted: #6B6B64;
+  --color-accent: #4B5D52;
+  --color-accent-soft: #E7EBE6;
+  --color-border: #E4E2DD;
+  --color-error: #A6402F;
+
+  --font-display: 'Anton', Impact, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius: 3px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Pulsante-link usato dentro testi/etichette per aprire finestre di dettaglio. */
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--color-accent);
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link-btn:hover {
+  opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   titolo: string;
 }
@@ -8,6 +10,7 @@ const voci = [
   { href: '/', label: 'Home' },
   { href: '/il-progetto', label: 'Il progetto' },
   { href: '/lo-spazio', label: 'Lo spazio' },
+  { href: '/iscrizioni', label: 'Iscriviti' },
   { href: '/contatti', label: 'Contatti' },
 ];
 ---
@@ -21,7 +24,9 @@ const voci = [
   </head>
   <body>
     <header class="sito-header">
-      <a class="logo" href="/">Progetto Drama</a>
+      <a class="logo" href="/">
+        <img src="/logo.png" alt="Progetto Drama" />
+      </a>
       <nav>
         <ul>
           {voci.map((voce) => (
@@ -42,10 +47,8 @@ const voci = [
     <style>
       :root {
         color-scheme: light;
-        font-family: system-ui, sans-serif;
       }
       body {
-        margin: 0;
         display: flex;
         flex-direction: column;
         min-height: 100vh;
@@ -57,18 +60,17 @@ const voci = [
         justify-content: space-between;
         gap: 1rem;
         padding: 1rem 1.5rem;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid var(--color-border);
       }
-      .logo {
-        font-weight: bold;
-        font-size: 1.2rem;
-        text-decoration: none;
-        color: inherit;
+      .logo img {
+        display: block;
+        height: 32px;
+        width: auto;
       }
       nav ul {
         display: flex;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 1.25rem;
         list-style: none;
         margin: 0;
         padding: 0;
@@ -76,22 +78,25 @@ const voci = [
       nav a {
         text-decoration: none;
         color: inherit;
+        font-size: 14px;
+        font-weight: 500;
       }
       nav a:hover {
-        text-decoration: underline;
+        color: var(--color-accent);
       }
       main {
         flex: 1;
         width: 100%;
-        max-width: 60rem;
+        max-width: 640px;
         margin: 0 auto;
-        padding: 1.5rem;
+        padding: 2rem 1.5rem 4rem;
         box-sizing: border-box;
       }
       .sito-footer {
         padding: 1.5rem;
-        border-top: 1px solid #ddd;
+        border-top: 1px solid var(--color-border);
         font-size: 0.85rem;
+        color: var(--color-ink-muted);
         text-align: center;
       }
     </style>

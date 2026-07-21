@@ -1,0 +1,98 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  label: string;
+  type?: 'text' | 'email' | 'tel' | 'date';
+  required?: boolean;
+  placeholder?: string;
+  pattern?: string;
+  maxlength?: number;
+  autocomplete?: string;
+  inputmode?: 'text' | 'numeric';
+  hint?: string;
+  optional?: boolean;
+  uppercase?: boolean;
+  value?: string;
+}
+const {
+  id,
+  name,
+  label,
+  type = 'text',
+  required = false,
+  placeholder,
+  pattern,
+  maxlength,
+  autocomplete,
+  inputmode,
+  hint,
+  optional = false,
+  uppercase = false,
+  value,
+} = Astro.props;
+---
+
+<div class="campo">
+  <label for={id}>
+    {label}
+    {optional && <span class="facoltativo"> (facoltativo)</span>}
+  </label>
+  <input
+    type={type}
+    id={id}
+    name={name}
+    required={required}
+    placeholder={placeholder}
+    pattern={pattern}
+    maxlength={maxlength}
+    autocomplete={autocomplete}
+    inputmode={inputmode}
+    value={value}
+    class:list={[{ maiuscolo: uppercase }]}
+  />
+  {hint && <p class="hint">{hint}</p>}
+</div>
+
+<style>
+  .campo {
+    margin-bottom: 20px;
+  }
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .facoltativo {
+    font-weight: 400;
+    color: var(--color-ink-muted);
+  }
+  input {
+    width: 100%;
+    padding: 11px 14px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-ink);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    transition: border-color 0.15s ease;
+  }
+  input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-soft);
+  }
+  input:invalid:not(:placeholder-shown) {
+    border-color: var(--color-error);
+  }
+  .maiuscolo {
+    text-transform: uppercase;
+  }
+  .hint {
+    font-size: 12px;
+    color: var(--color-ink-muted);
+    margin-top: 4px;
+  }
+</style>

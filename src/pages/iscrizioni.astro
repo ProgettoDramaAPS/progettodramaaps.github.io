@@ -1,0 +1,333 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Campo from '../components/form/Campo.astro';
+import CampoTextarea from '../components/form/CampoTextarea.astro';
+import CasellaPrivacy from '../components/form/CasellaPrivacy.astro';
+import PulsanteInvio from '../components/form/PulsanteInvio.astro';
+import MessaggioErrore from '../components/form/MessaggioErrore.astro';
+import MessaggioSuccesso from '../components/form/MessaggioSuccesso.astro';
+import FinestraPrivacy from '../components/form/FinestraPrivacy.astro';
+
+const ENDPOINT_URL =
+  'https://script.google.com/macros/s/AKfycbxeEmlg1ZiD8Y98rugN0vFRqPzkiXn9CLXRjoLmc1v4vHb8lRbeHa_iNBzmumLQdkzRPg/exec';
+---
+
+<Layout titolo="Diventa socio">
+  <header class="intro">
+    <p class="eyebrow">Registro soci</p>
+    <h1>Diventa socio di Drama APS</h1>
+    <p>Compila il modulo per iscriverti all'associazione. Ci vogliono circa due minuti.</p>
+  </header>
+
+  <form id="signup-form" novalidate>
+    <fieldset>
+      <legend>Dati anagrafici</legend>
+
+      <Campo id="nome" name="nome" label="Nome e cognome" required autocomplete="name" />
+      <Campo id="dataNascita" name="dataNascita" label="Data di nascita" type="date" required />
+      <Campo
+        id="luogoNascita"
+        name="luogoNascita"
+        label="Luogo di nascita"
+        required
+        placeholder="Città, Provincia"
+      />
+      <Campo
+        id="codiceFiscale"
+        name="codiceFiscale"
+        label="Codice fiscale"
+        required
+        pattern="^[A-Za-z]{6}[0-9]{2}[A-Za-z][0-9]{2}[A-Za-z][0-9]{3}[A-Za-z]$"
+        maxlength={16}
+        uppercase
+        placeholder="RSSMRA80A01H501U"
+        hint="16 caratteri, formato standard."
+      />
+    </fieldset>
+
+    <fieldset>
+      <legend>Contatti</legend>
+
+      <Campo
+        id="indirizzo"
+        name="indirizzo"
+        label="Indirizzo"
+        required
+        autocomplete="address-line1"
+        placeholder="Via/Piazza e numero civico"
+      />
+
+      <div class="riga">
+        <Campo id="citta" name="citta" label="Città" required autocomplete="address-level2" />
+        <Campo
+          id="cap"
+          name="cap"
+          label="CAP"
+          required
+          autocomplete="postal-code"
+          inputmode="numeric"
+          pattern="[0-9]{4,10}"
+          maxlength={10}
+        />
+      </div>
+
+      <div class="riga riga--pari">
+        <Campo
+          id="provincia"
+          name="provincia"
+          label="Provincia"
+          optional
+          autocomplete="address-level1"
+          placeholder="es. RM"
+        />
+        <Campo id="paese" name="paese" label="Paese" required autocomplete="country-name" value="Italia" />
+      </div>
+
+      <Campo id="email" name="email" label="Email" type="email" required autocomplete="email" />
+      <Campo id="telefono" name="telefono" label="Telefono" type="tel" required autocomplete="tel" />
+    </fieldset>
+
+    <fieldset>
+      <legend>Motivazione</legend>
+      <CampoTextarea id="motivazione" name="motivazione" label="Come hai conosciuto Drama?" optional />
+    </fieldset>
+
+    <fieldset>
+      <legend>Dichiarazione di adesione</legend>
+      <p class="dichiarazione">
+        Inviando la richiesta il sottoscritto chiede di entrare a far parte dell'Associazione di Promozione
+        Sociale &ldquo;Progetto Drama&rdquo; per l'anno corrente in qualità di <strong>socio ordinario</strong>.
+        A tal fine dichiara di avere preso visione dello Statuto presente sul sito, di approvarlo in ogni sua
+        parte e di condividere i principi e le finalità dell'Associazione. Si impegna a versare la quota
+        associativa annuale di € 10,00, o altro valore durante eventi promozionali, in contanti o all'account
+        PayPal dell'Associazione (<a href="https://paypal.me/friesgo" target="_blank" rel="noopener">paypal.me/friesgo</a>).
+        Dichiara inoltre di esonerare l'Associazione Progetto Drama APS da ogni responsabilità per tutti i danni,
+        fisici e/o patrimoniali, che potranno derivare al sottoscritto dallo svolgimento delle attività organizzate
+        dall'associazione nel caso non siano diretta conseguenza di dolo o colpa grave dell'Associazione stessa.
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Privacy</legend>
+      <CasellaPrivacy id="consenso" name="consenso" value="Presa visione e accettazione">
+        Dichiaro di aver preso visione dell'<button type="button" class="link-btn" data-apri-privacy="privacy-dialog"
+          >informativa sul trattamento dei dati personali</button
+        > e di accettarne i contenuti, acconsentendo al trattamento dei miei dati per le finalità ivi indicate.
+      </CasellaPrivacy>
+    </fieldset>
+
+    <!-- Traccia nel foglio quale versione dell'informativa è stata accettata -->
+    <input type="hidden" name="informativaVersione" value="2026-07-03" />
+
+    <PulsanteInvio testo="Invia richiesta" />
+    <MessaggioErrore />
+  </form>
+
+  <MessaggioSuccesso titolo="Iscrizione ricevuta" testo="Grazie! Ti contatteremo a breve per confermare l'iscrizione." />
+
+  <FinestraPrivacy id="privacy-dialog" checkboxId="consenso">
+    <p>
+      Ai sensi degli artt. 13 e 14 del Regolamento UE 2016/679 (&ldquo;GDPR&rdquo;), la informiamo su come sono
+      trattati i dati personali forniti tramite il presente modulo di iscrizione.
+    </p>
+
+    <h3>1. Titolare del trattamento</h3>
+    <p>
+      Titolare del trattamento è l'<strong>Associazione di Promozione Sociale &ldquo;Progetto Drama&rdquo;</strong>,
+      con sede legale in Via Giovanni Caselli 39, 00149 Roma (RM), C.F. 96653370583, e-mail
+      <a href="mailto:progettodrama.aps@gmail.com">progettodrama.aps@gmail.com</a>.
+    </p>
+
+    <h3>2. Responsabile della protezione dei dati (RPD/DPO)</h3>
+    <p>
+      L'Associazione non ha nominato un RPD, non ricorrendo i presupposti dell'art. 37 GDPR. Per ogni richiesta
+      è possibile contattare il Titolare ai recapiti sopra indicati.
+    </p>
+
+    <h3>3. Categorie di dati raccolti</h3>
+    <p>
+      Nome e cognome, data e luogo di nascita, codice fiscale, indirizzo di residenza, e-mail, telefono e,
+      in via facoltativa, la modalità con cui si è conosciuta l'Associazione.
+    </p>
+
+    <h3>4. Finalità e base giuridica</h3>
+    <ul>
+      <li>
+        <strong>a)</strong> Iscrizione al libro soci e gestione del rapporto associativo — esecuzione di misure
+        connesse al rapporto associativo (art. 6.1.b GDPR).
+      </li>
+      <li>
+        <strong>b)</strong> Adempimenti contabili, fiscali e amministrativi — obbligo legale (art. 6.1.c GDPR).
+      </li>
+      <li>
+        <strong>c)</strong> Comunicazioni ai soci su attività, iniziative ed eventi dell'Associazione —
+        legittimo interesse (art. 6.1.f GDPR).
+      </li>
+      <li>
+        <strong>d)</strong> Eventuali comunicazioni promozionali ulteriori — solo previo consenso specifico e
+        distinto, revocabile in qualsiasi momento (art. 6.1.a GDPR).
+      </li>
+    </ul>
+
+    <h3>5. Natura del conferimento</h3>
+    <p>
+      Il conferimento dei dati obbligatori è necessario per perfezionare l'iscrizione; il mancato conferimento
+      non consente di darvi seguito. I dati facoltativi sono a libera scelta dell'interessato.
+    </p>
+
+    <h3>6. Modalità e conservazione</h3>
+    <p>
+      Il trattamento avviene con strumenti informatici e misure adeguate ex art. 32 GDPR. I dati sono conservati
+      per la durata dell'iscrizione (finalità a); per 10 anni per gli obblighi contabili e fiscali (finalità b);
+      fino a revoca del consenso (finalità d).
+    </p>
+
+    <h3>7. Destinatari</h3>
+    <p>
+      I dati possono essere trattati da soci del direttivo e volontari autorizzati, da consulenti (es.
+      commercialista) e da fornitori di servizi informatici quali responsabili del trattamento ex art. 28 GDPR,
+      in particolare <strong>Google LLC / Google Ireland Ltd</strong> (Google Workspace, Sheets e Apps Script per la
+      raccolta e l'archiviazione dei dati) e <strong>GitHub, Inc. (Microsoft Corp.)</strong> per l'hosting del modulo
+      (GitHub Pages), oltre a enti pubblici e autorità nei casi previsti dalla legge.
+    </p>
+
+    <h3>8. Trasferimento verso Paesi extra-UE</h3>
+    <p>
+      I fornitori di cui al punto 7 hanno sede negli USA e possono trattare i dati fuori dallo Spazio Economico
+      Europeo. Il trasferimento avviene nel rispetto degli artt. 44 e ss. GDPR, sulla base dell'adesione di tali
+      fornitori all'<strong>EU-U.S. Data Privacy Framework</strong> (adeguatezza riconosciuta dalla Commissione UE
+      il 10.07.2023) e/o delle <strong>Clausole Contrattuali Standard</strong> approvate dalla Commissione UE.
+      Copia delle garanzie è disponibile scrivendo al Titolare.
+    </p>
+
+    <h3>9. Processo decisionale automatizzato</h3>
+    <p>L'Associazione non adotta processi decisionali automatizzati né profilazione (art. 22 GDPR).</p>
+
+    <h3>10. Diritti dell'interessato</h3>
+    <p>
+      Nei limiti degli artt. 15-22 GDPR, l'interessato può esercitare i diritti di accesso, rettifica,
+      cancellazione, limitazione, portabilità e opposizione, nonché revocare in qualsiasi momento il consenso
+      eventualmente prestato (art. 7.3).
+    </p>
+
+    <h3>11. Esercizio dei diritti e reclamo</h3>
+    <p>
+      I diritti si esercitano scrivendo a <a href="mailto:progettodrama.aps@gmail.com">progettodrama.aps@gmail.com</a>
+      o all'indirizzo della sede legale. L'interessato ha inoltre diritto di proporre reclamo al
+      <strong>Garante per la Protezione dei Dati Personali</strong> (Piazza Venezia 11, 00187 Roma —
+      <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">garanteprivacy.it</a>).
+    </p>
+
+    <p class="meta">Informativa aggiornata al 3 luglio 2026.</p>
+  </FinestraPrivacy>
+</Layout>
+
+<script define:vars={{ ENDPOINT_URL }}>
+  const form = document.getElementById('signup-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const errorMsg = document.getElementById('form-error');
+  const successPanel = document.getElementById('success-panel');
+
+  const cfInput = document.getElementById('codiceFiscale');
+  cfInput.addEventListener('input', () => {
+    cfInput.value = cfInput.value.toUpperCase();
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorMsg.style.display = 'none';
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Invio in corso…';
+
+    const data = new URLSearchParams(new FormData(form));
+
+    try {
+      // mode: 'no-cors' è necessario per i Web App di Apps Script.
+      // Non possiamo leggere la risposta, quindi consideriamo riuscito
+      // ogni invio che non genera un errore di rete.
+      await fetch(ENDPOINT_URL, { method: 'POST', mode: 'no-cors', body: data });
+      form.style.display = 'none';
+      successPanel.style.display = 'block';
+    } catch (err) {
+      errorMsg.textContent = 'Errore di connessione. Controlla la rete e riprova.';
+      errorMsg.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Invia richiesta';
+    }
+  });
+</script>
+
+<style>
+  .intro {
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 0 0 12px;
+  }
+  .intro h1 {
+    font-size: 40px;
+    margin: 0 0 16px;
+  }
+  .intro p {
+    color: var(--color-ink-muted);
+    max-width: 46ch;
+    margin: 0;
+  }
+  fieldset {
+    border: none;
+    padding: 0 0 32px 20px;
+    margin: 0 0 32px;
+    border-left: 2px solid var(--color-border);
+  }
+  legend {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  .riga {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+  }
+  .riga--pari {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 480px) {
+    .riga,
+    .riga--pari {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+  .dichiarazione {
+    font-size: 12.5px;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .dichiarazione strong {
+    font-weight: 600;
+    font-style: normal;
+    color: var(--color-ink);
+  }
+  .dichiarazione a {
+    color: var(--color-accent);
+    font-style: normal;
+  }
+</style>

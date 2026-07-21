@@ -8,4 +8,6 @@ Riattiviamo la Bocciofila del Parco Caselli. Un posto aperto al quartiere, non u
 ufficio e non un centro anziani: un posto dove ci si incontra, si fa qualcosa insieme,
 si torna.
 
-*(Qui arriveranno presto i link a "Iscriviti" e agli eventi, appena quelle pagine sono pronte.)*
+[Iscriviti](/iscrizioni)
+
+*(Qui arriverà presto anche il link agli eventi, appena quella pagina è pronta.)*
