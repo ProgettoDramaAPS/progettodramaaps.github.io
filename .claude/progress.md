@@ -63,3 +63,9 @@ Stato del lavoro, aggiornato ad ogni sessione. Cosa è stato fatto, cosa è in c
   Su richiesta di Paolo, il numero di posti disponibili non è più mostrato al
   pubblico (resta visibile solo aprendo il foglio Google); il modulo si chiude
   comunque da solo, senza mostrare il numero, quando i posti finiscono.
+- **Fase 6 completata**: pagina `/documenti` (Statuto, Atto costitutivo, Informativa
+  privacy). Cerca i PDF in `public/documenti/` con nomi fissi (statuto.pdf,
+  atto-costitutivo.pdf, informativa-privacy.pdf — vedi LEGGIMI.txt in quella
+  cartella); se un file manca, la pagina si costruisce comunque, mostrando "PDF
+  non ancora caricato" invece di un link rotto. Link aggiunto nel piè di pagina.
+  Nessun PDF vero ancora caricato: Paolo deve aggiungerli lui in quella cartella.

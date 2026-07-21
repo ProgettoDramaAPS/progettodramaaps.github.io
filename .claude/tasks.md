@@ -3,11 +3,10 @@
 Elenco di cosa c'è da fare. Spuntare quando fatto, non cancellare le righe.
 
 ## Da fare
-- [ ] Pagina Documenti (Statuto, Atto costitutivo, Informativa privacy)
-- [ ] Deploy automatico via GitHub Actions su GitHub Pages
 - [ ] GoatCounter per le statistiche
-- [ ] Segnalare a Paolo: informativa privacy da aggiornare per le prenotazioni evento
-  (non è un lavoro da Claude Code)
+- [ ] Paolo carica i 3 PDF veri in public/documenti/
+- [ ] Direttivo aggiorna l'informativa privacy generale (poi si può attivare
+  `prenotabile: true` su eventi reali)
 
 ## Fatto
 - [x] Letti SPEC.md e CLAUDE.md
@@ -21,3 +20,5 @@ Elenco di cosa c'è da fare. Spuntare quando fatto, non cancellare le righe.
 - [x] Fase 5 — prenotazione evento (Sheet/endpoint separati, posti limitati opzionali)
       — testo privacy provvisorio, NON pubblicare su eventi reali finché il
       direttivo non aggiorna l'informativa
+- [x] Fase 6 — pagina Documenti (Statuto, Atto costitutivo, Informativa privacy),
+      gestisce PDF mancanti senza rompersi
