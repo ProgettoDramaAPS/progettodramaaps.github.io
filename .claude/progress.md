@@ -20,3 +20,19 @@ Stato del lavoro, aggiornato ad ogni sessione. Cosa è stato fatto, cosa è in c
   `src/layouts/Layout.astro`. Deploy verificato online.
   Menu ed eventuali link a Eventi/Iscrizioni/Documenti aggiunti solo quando quelle
   pagine esisteranno (fasi successive), per non avere link "morti" nel frattempo.
+- **Scoperta importante**: il modulo iscrizioni attuale NON vive nel repo
+  `progettodramaaps.github.io` (che non esisteva prima di oggi), ma in un repo
+  separato `ProgettoDramaAPS/iscrizioni`, pubblicato come "project page" su
+  GitHub Pages — per questo risulta raggiungibile su
+  https://progettodramaaps.github.io/iscrizioni/. Le project page "oscurano" il
+  path corrispondente del sito principale: finché quel repo resta pubblicato,
+  la nostra pagina /iscrizioni non sarà raggiungibile in produzione, anche se
+  esiste già nel nostro codice.
+- **Fase 3 (in corso)**: ricostruita la pagina `/iscrizioni` dentro il nuovo sito,
+  campo per campo identica a quella attuale (stessi name, stesso endpoint Apps
+  Script, stesso testo di dichiarazione e stessa informativa privacy verbatim),
+  usando componenti condivisi in `src/components/form/`. Non abbiamo toccato
+  l'Apps Script: endpoint invariato. La pagina è nel repo ma NON ancora
+  raggiungibile in produzione (oscurata dal vecchio repo `iscrizioni`, vedi sopra).
+  Prossimo passo: test in locale con dati finti, poi — solo con l'ok esplicito di
+  Paolo — disattivare il repo/project page `iscrizioni` per liberare il path.

@@ -3,8 +3,9 @@
 Elenco di cosa c'è da fare. Spuntare quando fatto, non cancellare le righe.
 
 ## Da fare
-- [ ] Migrazione modulo iscrizioni su `/iscrizioni` (stesso Sheet, stesso endpoint)
-- [ ] Componenti condivisi (campo testo, email, data, checkbox privacy, invio, esito)
+- [ ] Migrazione modulo iscrizioni — pagina ricostruita, da testare in locale e poi
+      pubblicare disattivando il vecchio repo `iscrizioni` (project page che oscura
+      il path)
 - [ ] Eventi: contenuti Markdown + pagina elenco + pagina singolo evento
 - [ ] Prenotazione evento: nuovo Sheet, nuovo endpoint Apps Script, form separato
 - [ ] Pagina Documenti (Statuto, Atto costitutivo, Informativa privacy)
@@ -19,3 +20,5 @@ Elenco di cosa c'è da fare. Spuntare quando fatto, non cancellare le righe.
 - [x] Risposte raccolte, piano approvato
 - [x] Fase 1 — scheletro Astro + repo GitHub + deploy automatico funzionante
 - [x] Fase 2 — vetrina (Home, Il progetto, Lo spazio, Contatti) da Markdown
+- [x] Fase 3 (parziale) — pagina /iscrizioni ricostruita fedelmente, componenti
+      condivisi creati; in attesa di test locale e cutover del repo `iscrizioni`

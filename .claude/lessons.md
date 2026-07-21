@@ -11,3 +11,13 @@ invece di interrompere Paolo per ognuna. Se una scelta va rivista, si cambia qui
 - Identity git locale del repo: nome "Progetto Drama APS", email
   progettodrama.aps@gmail.com (account associazione, non personale).
 - Nome del pacchetto in `package.json`: `progettodramaaps.github.io` (allineato al repo).
+
+## Fase 3 — migrazione iscrizioni
+- Il modulo attuale vive nel repo `ProgettoDramaAPS/iscrizioni` (GitHub Pages come
+  "project page"), non nel repo del sito nuovo. Le project page oscurano il path
+  corrispondente sul sito principale — per questo la nostra `/iscrizioni` non sarà
+  visibile finché non disattiviamo quel repo. Decisione da prendere con Paolo,
+  non in autonomia, perché è il passaggio più rischioso (URL già in giro).
+- Ho copiato testo legale (dichiarazione + informativa privacy) e nomi dei campi
+  parola per parola dal modulo attuale, senza parafrasare: sono testi legalmente
+  rilevanti, non contenuti discrezionali.
