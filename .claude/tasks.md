@@ -3,7 +3,6 @@
 Elenco di cosa c'è da fare. Spuntare quando fatto, non cancellare le righe.
 
 ## Da fare
-- [ ] Vetrina: Home, Il progetto, Lo spazio, Contatti
 - [ ] Migrazione modulo iscrizioni su `/iscrizioni` (stesso Sheet, stesso endpoint)
 - [ ] Componenti condivisi (campo testo, email, data, checkbox privacy, invio, esito)
 - [ ] Eventi: contenuti Markdown + pagina elenco + pagina singolo evento
@@ -19,3 +18,4 @@ Elenco di cosa c'è da fare. Spuntare quando fatto, non cancellare le righe.
 - [x] Creata cartella .claude
 - [x] Risposte raccolte, piano approvato
 - [x] Fase 1 — scheletro Astro + repo GitHub + deploy automatico funzionante
+- [x] Fase 2 — vetrina (Home, Il progetto, Lo spazio, Contatti) da Markdown

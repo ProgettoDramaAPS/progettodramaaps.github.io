@@ -14,3 +14,9 @@ Stato del lavoro, aggiornato ad ogni sessione. Cosa è stato fatto, cosa è in c
   GitHub Actions". Sito online su https://progettodramaaps.github.io.
 - Branch principale: `main`. Identity git locale del repo impostata su
   Progetto Drama APS / progettodrama.aps@gmail.com.
+- **Fase 2 completata**: vetrina con 4 pagine (Home, Il progetto, Lo spazio, Contatti),
+  contenuti in Markdown in `src/content/pagine/*.md` (testi segnaposto, da scrivere
+  con i contenuti veri), layout condiviso con menu e piè di pagina in
+  `src/layouts/Layout.astro`. Deploy verificato online.
+  Menu ed eventuali link a Eventi/Iscrizioni/Documenti aggiunti solo quando quelle
+  pagine esisteranno (fasi successive), per non avere link "morti" nel frattempo.
