@@ -7,9 +7,7 @@ import PulsanteInvio from '../components/form/PulsanteInvio.astro';
 import MessaggioErrore from '../components/form/MessaggioErrore.astro';
 import MessaggioSuccesso from '../components/form/MessaggioSuccesso.astro';
 import FinestraPrivacy from '../components/form/FinestraPrivacy.astro';
-
-const ENDPOINT_URL =
-  'https://script.google.com/macros/s/AKfycbxeEmlg1ZiD8Y98rugN0vFRqPzkiXn9CLXRjoLmc1v4vHb8lRbeHa_iNBzmumLQdkzRPg/exec';
+import { ISCRIZIONI_ENDPOINT_URL as ENDPOINT_URL } from '../config/endpoints';
 ---
 
 <Layout titolo="Diventa socio">

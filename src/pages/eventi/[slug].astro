@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import PrenotazioneForm from '../../components/eventi/PrenotazioneForm.astro';
 
 export async function getStaticPaths() {
   const eventi = await getCollection('eventi');
@@ -16,6 +17,9 @@ const { Content } = await render(entry);
 const dataFormattata = entry.data.data
   ? entry.data.data.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })
   : undefined;
+
+const oggi = new Date();
+const eventoPassato = entry.data.data ? entry.data.data < oggi : false;
 ---
 
 <Layout titolo={entry.data.titolo}>
@@ -29,6 +33,14 @@ const dataFormattata = entry.data.data
   <div class="contenuto">
     <Content />
   </div>
+
+  {entry.data.prenotabile && (
+    eventoPassato ? (
+      <p class="prenotazioni-chiuse">Le prenotazioni per questo evento sono chiuse.</p>
+    ) : (
+      <PrenotazioneForm slug={entry.id} titoloEvento={entry.data.titolo} postiMax={entry.data.postiMax} />
+    )
+  )}
 </Layout>
 
 <style>
@@ -44,5 +56,12 @@ const dataFormattata = entry.data.data
   }
   .contenuto {
     margin-top: 24px;
+  }
+  .prenotazioni-chiuse {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-ink-muted);
+    font-style: italic;
   }
 </style>

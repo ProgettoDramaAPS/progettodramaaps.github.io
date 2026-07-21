@@ -15,6 +15,8 @@ const eventi = defineCollection({
     data: z.coerce.date().optional(),
     luogo: z.string().optional(),
     immagine: z.string().optional(),
+    prenotabile: z.boolean().optional().default(false),
+    postiMax: z.number().int().positive().optional(),
   }),
 });
 

@@ -1,0 +1,177 @@
+---
+import Campo from '../form/Campo.astro';
+import CasellaPrivacy from '../form/CasellaPrivacy.astro';
+import PulsanteInvio from '../form/PulsanteInvio.astro';
+import MessaggioErrore from '../form/MessaggioErrore.astro';
+import MessaggioSuccesso from '../form/MessaggioSuccesso.astro';
+import FinestraPrivacy from '../form/FinestraPrivacy.astro';
+import { PRENOTAZIONI_ENDPOINT_URL } from '../../config/endpoints';
+
+interface Props {
+  slug: string;
+  titoloEvento: string;
+  postiMax?: number;
+}
+const { slug, titoloEvento, postiMax } = Astro.props;
+
+const idForm = `prenota-${slug}`;
+const idErrore = `${idForm}-errore`;
+const idSuccesso = `${idForm}-successo`;
+const idSubmit = `${idForm}-invia`;
+const idEsauriti = `${idForm}-esauriti`;
+const idConsenso = `${idForm}-consenso`;
+const idPrivacy = `${idForm}-privacy`;
+const idPostiInfo = `${idForm}-posti-info`;
+---
+
+<div class="prenotazione">
+  <h2>Prenota il tuo posto</h2>
+
+  {postiMax && (
+    <p class="posti-info" id={idPostiInfo}>
+      Posti disponibili: verifica in corso…
+    </p>
+  )}
+
+  <form id={idForm} novalidate>
+    <Campo id={`${idForm}-nome`} name="nome" label="Nome e cognome" required autocomplete="name" />
+    <Campo id={`${idForm}-email`} name="email" label="Email" type="email" required autocomplete="email" />
+    <Campo
+      id={`${idForm}-persone`}
+      name="persone"
+      label="Numero di persone"
+      type="number"
+      required
+      min={1}
+      value="1"
+    />
+
+    <CasellaPrivacy id={idConsenso} name="consenso" value="Presa visione e accettazione">
+      Dichiaro di aver preso visione dell'<button type="button" class="link-btn" data-apri-privacy={idPrivacy}
+        >informativa sul trattamento dei dati personali</button
+      > e di accettarne i contenuti.
+    </CasellaPrivacy>
+
+    <input type="hidden" name="evento" value={slug} />
+    <input type="hidden" name="eventoTitolo" value={titoloEvento} />
+    <input type="hidden" name="informativaVersione" value="bozza" />
+
+    <PulsanteInvio id={idSubmit} testo="Prenota" />
+    <MessaggioErrore id={idErrore} />
+  </form>
+
+  <MessaggioSuccesso id={idSuccesso} titolo="Prenotazione ricevuta" testo="Grazie! Ti aspettiamo." />
+
+  <p class="esauriti" id={idEsauriti} style="display: none;">Posti esauriti per questo evento.</p>
+
+  <FinestraPrivacy
+    id={idPrivacy}
+    checkboxId={idConsenso}
+    titolo="Informativa sul trattamento dei dati personali (prenotazione evento)"
+  >
+    <p><strong>Testo provvisorio — non pubblicare senza revisione del direttivo.</strong></p>
+    <p>
+      I dati raccolti con questo modulo (nome e cognome, email, numero di persone) sono trattati
+      dall'Associazione Progetto Drama APS al solo fine di organizzare questo evento e comunicare
+      eventuali variazioni. Non sono incrociati con il registro soci.
+    </p>
+    <p>
+      Prima di rendere pubblico questo modulo, questo testo va sostituito con un paragrafo aggiunto
+      all'informativa privacy generale dell'associazione (artt. 13-14 GDPR), a cura del direttivo.
+    </p>
+  </FinestraPrivacy>
+</div>
+
+<script
+  define:vars={{
+    ENDPOINT_URL: PRENOTAZIONI_ENDPOINT_URL,
+    slug,
+    postiMax,
+    idForm,
+    idErrore,
+    idSuccesso,
+    idSubmit,
+    idEsauriti,
+    idPostiInfo,
+  }}
+>
+  const form = document.getElementById(idForm);
+  const submitBtn = document.getElementById(idSubmit);
+  const errorMsg = document.getElementById(idErrore);
+  const successPanel = document.getElementById(idSuccesso);
+  const esauritiMsg = document.getElementById(idEsauriti);
+  const postiInfo = document.getElementById(idPostiInfo);
+  const personeInput = form.querySelector('input[name="persone"]');
+
+  async function controllaPosti() {
+    if (!postiMax) return;
+    try {
+      const risposta = await fetch(`${ENDPOINT_URL}?azione=conteggio&evento=${encodeURIComponent(slug)}`);
+      const dati = await risposta.json();
+      const rimasti = postiMax - (dati.prenotati || 0);
+
+      if (postiInfo) {
+        postiInfo.textContent = rimasti > 0 ? `Posti disponibili: ${rimasti}` : 'Posti esauriti';
+      }
+      if (rimasti <= 0) {
+        form.style.display = 'none';
+        esauritiMsg.style.display = 'block';
+      } else if (personeInput) {
+        personeInput.max = String(rimasti);
+      }
+    } catch (err) {
+      // Se il controllo posti non riesce (rete, endpoint irraggiungibile), lasciamo
+      // il modulo aperto piuttosto che bloccare le prenotazioni per un problema tecnico.
+      console.warn('Controllo posti non riuscito:', err);
+      if (postiInfo) postiInfo.style.display = 'none';
+    }
+  }
+  controllaPosti();
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorMsg.style.display = 'none';
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Invio in corso…';
+
+    const data = new URLSearchParams(new FormData(form));
+
+    try {
+      await fetch(ENDPOINT_URL, { method: 'POST', mode: 'no-cors', body: data });
+      form.style.display = 'none';
+      successPanel.style.display = 'block';
+    } catch (err) {
+      errorMsg.textContent = 'Errore di connessione. Controlla la rete e riprova.';
+      errorMsg.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Prenota';
+    }
+  });
+</script>
+
+<style>
+  .prenotazione {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-border);
+  }
+  .prenotazione h2 {
+    font-size: 22px;
+    margin: 0 0 20px;
+  }
+  .posti-info {
+    font-size: 13px;
+    color: var(--color-ink-muted);
+    margin: 0 0 16px;
+  }
+  .esauriti {
+    color: var(--color-ink-muted);
+    font-style: italic;
+  }
+</style>
