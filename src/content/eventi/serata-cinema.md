@@ -1,5 +1,6 @@
 ---
 titolo: "Serata cinema all'aperto"
+data: "2026-09-10"
 luogo: "Bocciofila Parco Caselli"
 ---
 
