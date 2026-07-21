@@ -1,0 +1,11 @@
+Metti qui dentro i tre PDF, esattamente con questi nomi:
+
+- statuto.pdf
+- atto-costitutivo.pdf
+- informativa-privacy.pdf
+
+La pagina /documenti li trova da sola appena ci sono (basta un git push).
+Se manca un file, quella riga della pagina resta scritta ma senza link
+("PDF non ancora caricato"), invece di dare un errore.
+
+Questo file (LEGGIMI.txt) puoi cancellarlo quando avrai messo tutti e tre i PDF.
