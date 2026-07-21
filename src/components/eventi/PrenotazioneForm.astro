@@ -21,17 +21,10 @@ const idSubmit = `${idForm}-invia`;
 const idEsauriti = `${idForm}-esauriti`;
 const idConsenso = `${idForm}-consenso`;
 const idPrivacy = `${idForm}-privacy`;
-const idPostiInfo = `${idForm}-posti-info`;
 ---
 
 <div class="prenotazione">
   <h2>Prenota il tuo posto</h2>
-
-  {postiMax && (
-    <p class="posti-info" id={idPostiInfo}>
-      Posti disponibili: verifica in corso…
-    </p>
-  )}
 
   <form id={idForm} novalidate>
     <Campo id={`${idForm}-nome`} name="nome" label="Nome e cognome" required autocomplete="name" />
@@ -92,7 +85,6 @@ const idPostiInfo = `${idForm}-posti-info`;
     idSuccesso,
     idSubmit,
     idEsauriti,
-    idPostiInfo,
   }}
 >
   const form = document.getElementById(idForm);
@@ -100,9 +92,11 @@ const idPostiInfo = `${idForm}-posti-info`;
   const errorMsg = document.getElementById(idErrore);
   const successPanel = document.getElementById(idSuccesso);
   const esauritiMsg = document.getElementById(idEsauriti);
-  const postiInfo = document.getElementById(idPostiInfo);
   const personeInput = form.querySelector('input[name="persone"]');
 
+  // Il numero di posti rimasti non viene mostrato al pubblico: resta visibile
+  // solo internamente, aprendo il foglio Google. Qui si usa solo per decidere
+  // se il modulo va chiuso o no.
   async function controllaPosti() {
     if (!postiMax) return;
     try {
@@ -110,20 +104,16 @@ const idPostiInfo = `${idForm}-posti-info`;
       const dati = await risposta.json();
       const rimasti = postiMax - (dati.prenotati || 0);
 
-      if (postiInfo) {
-        postiInfo.textContent = rimasti > 0 ? `Posti disponibili: ${rimasti}` : 'Posti esauriti';
-      }
       if (rimasti <= 0) {
         form.style.display = 'none';
         esauritiMsg.style.display = 'block';
-      } else if (personeInput) {
+      } else {
         personeInput.max = String(rimasti);
       }
     } catch (err) {
       // Se il controllo posti non riesce (rete, endpoint irraggiungibile), lasciamo
       // il modulo aperto piuttosto che bloccare le prenotazioni per un problema tecnico.
       console.warn('Controllo posti non riuscito:', err);
-      if (postiInfo) postiInfo.style.display = 'none';
     }
   }
   controllaPosti();
@@ -164,11 +154,6 @@ const idPostiInfo = `${idForm}-posti-info`;
   .prenotazione h2 {
     font-size: 22px;
     margin: 0 0 20px;
-  }
-  .posti-info {
-    font-size: 13px;
-    color: var(--color-ink-muted);
-    margin: 0 0 16px;
   }
   .esauriti {
     color: var(--color-ink-muted);
