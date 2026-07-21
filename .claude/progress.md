@@ -5,6 +5,12 @@ Stato del lavoro, aggiornato ad ogni sessione. Cosa è stato fatto, cosa è in c
 ## 2026-07-21
 - Letti SPEC.md e CLAUDE.md (root e sito).
 - Creata cartella `.claude` con progress.md, tasks.md, lessons.md.
-- In attesa di risposte di Paolo su: ID Google Sheet libro soci, URL Apps Script
-  attuale, se partire dal repo `iscrizioni` o da un progetto Astro pulito.
-- Nessun piano ancora approvato. Nessun codice scritto.
+- Ricevute risposte di Paolo: Sheet libro soci e URL Apps Script salvati fuori dal
+  repo (non in chiaro nei file pubblici); si parte da un progetto Astro pulito.
+- Piano approvato (7 fasi, vedi tasks.md).
+- **Fase 1 completata**: repo GitHub `ProgettoDramaAPS/progettodramaaps.github.io`
+  creato (pubblico), progetto Astro scaffoldato in `sito/`, GitHub Actions per il
+  deploy automatico configurato e funzionante, GitHub Pages impostato su "Deploy da
+  GitHub Actions". Sito online su https://progettodramaaps.github.io.
+- Branch principale: `main`. Identity git locale del repo impostata su
+  Progetto Drama APS / progettodrama.aps@gmail.com.

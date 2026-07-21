@@ -3,9 +3,6 @@
 Elenco di cosa c'è da fare. Spuntare quando fatto, non cancellare le righe.
 
 ## Da fare
-- [ ] Raccogliere risposte di Paolo (Sheet libro soci, URL Apps Script, repo di partenza)
-- [ ] Piano a fasi approvato da Paolo
-- [ ] Setup progetto Astro (o migrazione da repo esistente)
 - [ ] Vetrina: Home, Il progetto, Lo spazio, Contatti
 - [ ] Migrazione modulo iscrizioni su `/iscrizioni` (stesso Sheet, stesso endpoint)
 - [ ] Componenti condivisi (campo testo, email, data, checkbox privacy, invio, esito)
@@ -20,3 +17,5 @@ Elenco di cosa c'è da fare. Spuntare quando fatto, non cancellare le righe.
 ## Fatto
 - [x] Letti SPEC.md e CLAUDE.md
 - [x] Creata cartella .claude
+- [x] Risposte raccolte, piano approvato
+- [x] Fase 1 — scheletro Astro + repo GitHub + deploy automatico funzionante
