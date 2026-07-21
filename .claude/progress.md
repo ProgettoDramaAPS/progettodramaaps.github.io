@@ -60,3 +60,6 @@ Stato del lavoro, aggiornato ad ogni sessione. Cosa è stato fatto, cosa è in c
   **Testo di consenso privacy nel modulo segnato come provvisorio**: da NON
   rendere pubblico su un evento reale finché il direttivo non aggiorna
   l'informativa privacy generale (vedi SPEC.md, sezione "Da segnalare").
+  Su richiesta di Paolo, il numero di posti disponibili non è più mostrato al
+  pubblico (resta visibile solo aprendo il foglio Google); il modulo si chiude
+  comunque da solo, senza mostrare il numero, quando i posti finiscono.
