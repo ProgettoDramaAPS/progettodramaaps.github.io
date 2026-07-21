@@ -3,7 +3,6 @@
 Elenco di cosa c'è da fare. Spuntare quando fatto, non cancellare le righe.
 
 ## Da fare
-- [ ] Eventi: contenuti Markdown + pagina elenco + pagina singolo evento
 - [ ] Prenotazione evento: nuovo Sheet, nuovo endpoint Apps Script, form separato
 - [ ] Pagina Documenti (Statuto, Atto costitutivo, Informativa privacy)
 - [ ] Deploy automatico via GitHub Actions su GitHub Pages
@@ -19,3 +18,4 @@ Elenco di cosa c'è da fare. Spuntare quando fatto, non cancellare le righe.
 - [x] Fase 2 — vetrina (Home, Il progetto, Lo spazio, Contatti) da Markdown
 - [x] Fase 3 — pagina /iscrizioni ricostruita fedelmente, componenti condivisi
       creati, testata in locale, pubblicata (vecchio repo `iscrizioni` disattivato)
+- [x] Fase 4 — eventi (Markdown, elenco prossimi/archivio automatico, pagina singola)

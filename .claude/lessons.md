@@ -24,3 +24,12 @@ invece di interrompere Paolo per ognuna. Se una scelta va rivista, si cambia qui
 - Cutover eseguito disattivando SOLO le GitHub Pages del repo `iscrizioni`
   (`DELETE repos/.../pages` via gh api), senza cancellare il repo: resta lì come
   backup silenzioso, riattivabile in un minuto in caso di problemi.
+
+## Fase 4 — eventi
+- Un evento senza data resta sempre tra i "prossimi" (non lo sappiamo classificare
+  come passato). Non è un bug: appena si aggiunge la data, si sposta da solo.
+- Il sito è statico: un evento passa da "prossimi" ad "archivio" solo al prossimo
+  build/pubblicazione (push), non da solo a mezzanotte. Per ora va bene così: Paolo
+  pubblica comunque spesso. Se in futuro servisse l'aggiornamento automatico anche
+  senza push, servirebbe un'azione GitHub schedulata — non richiesta ora, da
+  proporre solo se serve davvero.

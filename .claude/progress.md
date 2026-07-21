@@ -39,3 +39,10 @@ Stato del lavoro, aggiornato ad ogni sessione. Cosa è stato fatto, cosa è in c
   `ProgettoDramaAPS/iscrizioni` (repo non cancellato, solo Pages spenta — reversibile).
   Verificato che https://progettodramaaps.github.io/iscrizioni/ ora serve la pagina
   nuova (status 200, stessi campi, stesso endpoint). **Fase 3 completata.**
+  Paolo ha confermato la verifica reale (dati finti, riga comparsa nel Sheet).
+- **Fase 4 completata**: collection `eventi` (un file Markdown per evento, con
+  titolo, data/luogo/immagine opzionali), pagina elenco `/eventi` (prossimi +
+  archivio, ordinati e separati automaticamente in base alla data — un evento
+  senza data resta tra i prossimi finché non gliene si dà una) e pagina singola
+  `/eventi/<slug>`. Aggiunti 3 eventi di esempio (uno futuro, uno passato, uno
+  senza data) per mostrare i tre casi. "Eventi" aggiunto al menu, link dalla Home.
