@@ -28,6 +28,9 @@ const elenco = documenti.map((doc) => ({
         ) : (
           <span class="mancante">{doc.titolo} — PDF non ancora caricato</span>
         )}
+        {doc.file === 'informativa-privacy.pdf' && (
+          <> · <a href="/informativa-privacy">leggila sul sito</a></>
+        )}
       </li>
     ))}
   </ul>
