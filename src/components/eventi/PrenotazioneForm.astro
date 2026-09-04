@@ -47,7 +47,7 @@ const idPrivacy = `${idForm}-privacy`;
 
     <input type="hidden" name="evento" value={slug} />
     <input type="hidden" name="eventoTitolo" value={titoloEvento} />
-    <input type="hidden" name="informativaVersione" value="bozza" />
+    <input type="hidden" name="informativaVersione" value="2.1" />
 
     <PulsanteInvio id={idSubmit} testo="Prenota" />
     <MessaggioErrore id={idErrore} />
@@ -62,16 +62,22 @@ const idPrivacy = `${idForm}-privacy`;
     checkboxId={idConsenso}
     titolo="Informativa sul trattamento dei dati personali (prenotazione evento)"
   >
-    <p><strong>Testo provvisorio — non pubblicare senza revisione del direttivo.</strong></p>
     <p>
-      I dati raccolti con questo modulo (nome e cognome, email, numero di persone) sono trattati
-      dall'Associazione Progetto Drama APS al solo fine di organizzare questo evento e comunicare
-      eventuali variazioni. Non sono incrociati con il registro soci.
+      I dati raccolti con questo modulo (nome e cognome, e-mail, numero di persone) sono trattati da
+      Progetto Drama APS per organizzare la partecipazione a questo evento e comunicare eventuali
+      variazioni, come previsto al punto 5 dell'informativa privacy generale dell'Associazione
+      (&ldquo;Iscrizione e gestione della partecipazione a eventi e attività, anche di persone non
+      socie&rdquo;). Non sono incrociati con il registro soci.
     </p>
     <p>
-      Prima di rendere pubblico questo modulo, questo testo va sostituito con un paragrafo aggiunto
-      all'informativa privacy generale dell'associazione (artt. 13-14 GDPR), a cura del direttivo.
+      I dati sono conservati per 12 mesi dalla data dell'evento (punto 9 dell'informativa).
     </p>
+    <p>
+      Il testo completo dell'informativa (versione 2.1, approvata dal Consiglio Direttivo il 23
+      luglio 2026) è disponibile su
+      <a href="/informativa-privacy" target="_blank" rel="noopener">progettodramaaps.github.io/informativa-privacy</a>.
+    </p>
+    <p class="meta">Informativa aggiornata al 23 luglio 2026.</p>
   </FinestraPrivacy>
 </div>
 

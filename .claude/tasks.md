@@ -4,9 +4,6 @@ Elenco di cosa c'è da fare. Spuntare quando fatto, non cancellare le righe.
 
 ## Da fare
 - [ ] GoatCounter per le statistiche
-- [ ] Paolo carica i 3 PDF veri in public/documenti/
-- [ ] Direttivo aggiorna l'informativa privacy generale (poi si può attivare
-  `prenotabile: true` su eventi reali)
 
 ## Fatto
 - [x] Letti SPEC.md e CLAUDE.md
@@ -22,3 +19,9 @@ Elenco di cosa c'è da fare. Spuntare quando fatto, non cancellare le righe.
       direttivo non aggiorna l'informativa
 - [x] Fase 6 — pagina Documenti (Statuto, Atto costitutivo, Informativa privacy),
       gestisce PDF mancanti senza rompersi
+- [x] Paolo ha caricato i 3 PDF veri in public/documenti/
+- [x] Informativa privacy generale aggiornata (v2.1, approvata dal Consiglio
+      Direttivo il 23 luglio 2026), copre già la partecipazione a eventi di
+      persone non socie — modulo prenotazione (PrenotazioneForm.astro) aggiornato
+      per rimandarci, tolto il testo bozza. Primo evento con prenotabile: true
+      pubblicato: "Tanto pe' cantà", 19 settembre 2026, 60 posti.

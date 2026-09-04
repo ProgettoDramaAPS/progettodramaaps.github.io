@@ -52,7 +52,13 @@ invece di interrompere Paolo per ognuna. Se una scelta va rivista, si cambia qui
 - Codice del backend versionato in `sito/apps-script/prenotazioni/` (clasp), a
   differenza del backend iscrizioni che non ha mai avuto un sorgente tracciato
   da nessuna parte (probabilmente scritto a mano nell'editor online).
-- Il testo di consenso privacy nel modulo prenotazione è VOLUTAMENTE segnato come
-  "provvisorio, non pubblicare": non è un contenuto che decido io, va scritto dal
-  direttivo e aggiunto all'informativa generale prima che un evento reale abbia
+- Il testo di consenso privacy nel modulo prenotazione era VOLUTAMENTE segnato come
+  "provvisorio, non pubblicare": non è un contenuto che decido io, andava scritto dal
+  direttivo e aggiunto all'informativa generale prima che un evento reale avesse
   `prenotabile: true`.
+- Risolto il 04/09/2026: l'informativa privacy generale (v2.1, approvata dal
+  Consiglio Direttivo il 23 luglio 2026, § 5 e § 9) copriva già la partecipazione
+  a eventi di persone non socie — nessuno se n'era accorto perché il modulo
+  prenotazione era stato scritto prima che quella versione esistesse. Aggiornato
+  `PrenotazioneForm.astro` per rimandare a quel testo invece della bozza; versione
+  accettata registrata come "2.1" nel campo nascosto `informativaVersione`.
