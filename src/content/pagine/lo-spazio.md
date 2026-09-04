@@ -9,6 +9,12 @@ quando si può entrare.
 
 Qui puoi mettere anche qualche foto quando le hai pronte.
 
+![L'ingresso della sezione Bocciofila al Parco Caselli](/foto/lo-spazio/ingresso.jpg)
+![Il cortile esterno della Bocciofila](/foto/lo-spazio/cortile-esterno.jpg)
+![Una mostra di quadri allestita alla Bocciofila](/foto/lo-spazio/mostra-quadri.jpg)
+![La vista sul giardino da una finestra della Bocciofila](/foto/lo-spazio/finestra-giardino.jpg)
+![Un gruppo di persone che chiacchiera nel giardino della Bocciofila](/foto/lo-spazio/gruppo-giardino.jpg)
+
 <!--
 Per aggiungere foto: metti i file immagine dentro
 sito/public/foto/lo-spazio/ (es. sala.jpg, campo-bocce.jpg), poi qui scrivi
