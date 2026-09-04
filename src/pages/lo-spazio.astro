@@ -8,5 +8,22 @@ const { Content } = await render(pagina);
 
 <Layout titolo={pagina.data.titolo}>
   <h1>{pagina.data.titolo}</h1>
-  <Content />
+  <div class="testo">
+    <Content />
+  </div>
 </Layout>
+
+<style>
+  .testo :global(p:has(img)) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 24px 0;
+  }
+  .testo :global(img) {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+</style>
