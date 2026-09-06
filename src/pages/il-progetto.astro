@@ -1,12 +1,12 @@
 ---
-import { getEntry, render } from 'astro:content';
+import { getEntry } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 
 const pagina = await getEntry('pagine', 'il-progetto');
-const { Content } = await render(pagina);
 ---
 
 <Layout titolo={pagina.data.titolo}>
   <h1>{pagina.data.titolo}</h1>
-  <Content />
+  <p>Questa pagina la stiamo ancora scrivendo.</p>
+  <p>Intanto trovi già aperte le <a href="/iscrizioni">iscrizioni</a> e in programma gli <a href="/eventi">eventi</a> alla Bocciofila.</p>
 </Layout>
