@@ -1,47 +1,92 @@
 ---
-import { getEntry, render } from 'astro:content';
+import { getEntry } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 
 const pagina = await getEntry('pagine', 'home');
-const { Content } = await render(pagina);
 ---
 
 <Layout titolo={pagina.data.titolo}>
-  <h1>{pagina.data.titolo}</h1>
-  <div class="home-intro">
-    <div class="home-testo">
-      <Content />
+  <div class="full-bleed hero">
+    <img class="hero__logo" src="/logo-negativo.png" alt="Progetto Drama" />
+    <p class="hero__testo">
+      Riattiviamo la Bocciofila del Parco Caselli. Un posto aperto dove ci si incontra,
+      si fa qualcosa insieme, si torna.
+    </p>
+    <p class="hero__orari">
+      Siamo aperti con aula studio e co-working<br />dal lunedì al venerdì (9:30-18:00)
+    </p>
+    <div class="azioni azioni--centro">
+      <a class="btn btn-primary" href="/iscrizioni">Diventa socio</a>
+      <a class="btn btn-on-dark" href="/eventi">Scopri gli eventi</a>
     </div>
-    <img
-      class="home-foto"
-      src="/foto/home/lavori-in-corso.jpg"
-      alt="Un lavoro di restauro in corso nel laboratorio della Bocciofila"
-    />
+    <p class="hero__instagram">
+      Seguici sulla <a href="https://www.instagram.com/progettodrama/">pagina Instagram</a> per restare aggiornato su tutte le nostre iniziative.
+    </p>
   </div>
 </Layout>
 
 <style>
-  .home-intro {
+  .full-bleed {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    box-sizing: border-box;
+  }
+
+  .hero {
+    background: var(--pd-viola-drama);
+    padding: 56px 24px;
+    margin-top: -2rem;
+    margin-bottom: -4rem;
+    min-height: 70vh;
     display: flex;
-    flex-direction: column-reverse;
-    gap: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
-  .home-foto {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius);
+  .hero__logo {
+    height: 110px;
+    width: auto;
   }
+  .hero__testo {
+    max-width: 42ch;
+    margin: 24px auto 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--pd-celeste);
+  }
+  .hero__orari {
+    max-width: 42ch;
+    margin: 12px auto 0;
+    font-size: 13px;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--pd-celeste);
+  }
+  .hero__instagram {
+    margin: 20px 0 0;
+    font-size: 13px;
+    color: var(--pd-celeste);
+  }
+  .hero__instagram a {
+    color: var(--pd-bianco);
+  }
+
+  .azioni--centro {
+    justify-content: center;
+    margin-top: 24px;
+  }
+
   @media (min-width: 640px) {
-    .home-intro {
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 2rem;
+    .hero {
+      padding: 88px 40px 72px;
     }
-    .home-testo,
-    .home-foto {
-      flex: 1;
-      min-width: 0;
+    .hero__logo {
+      height: 160px;
     }
   }
 </style>

@@ -7,6 +7,28 @@ const pagina = await getEntry('pagine', 'il-progetto');
 
 <Layout titolo={pagina.data.titolo}>
   <h1>{pagina.data.titolo}</h1>
-  <p>Questa pagina la stiamo ancora scrivendo.</p>
-  <p>Intanto trovi già aperte le <a href="/iscrizioni">iscrizioni</a> e in programma gli <a href="/eventi">eventi</a> alla Bocciofila.</p>
+  <p class="testo-provvisorio">
+    Come tutte le cose belle, bisogna avere un po' di pazienza prima che prendano vita.
+    Stiamo lavorando per fare in modo che il sito ci rappresenti il più possibile.
+    Per il momento è possibile iscriversi e visionare i prossimi eventi nelle sezioni dedicate.
+    Rimanete aggiornati sulla nostra pagina Instagram. Ci vediamo in piazza :)
+  </p>
+  <img
+    class="foto-provvisoria"
+    src="/foto/home/lavori-in-corso.jpg"
+    alt="Un lavoro di restauro in corso nel laboratorio della Bocciofila"
+  />
 </Layout>
+
+<style>
+  .testo-provvisorio {
+    margin: 1.5rem 0;
+  }
+  .foto-provvisoria {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 1.5rem;
+    border: var(--border-heavy);
+  }
+</style>

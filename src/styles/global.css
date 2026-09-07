@@ -1,27 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Anton&family=Permanent+Marker&display=swap');
 
 /* ============================================
-   TOKEN DI STILE — identità visiva Drama, condivisa
-   da tutte le pagine e da tutti i moduli del sito.
+   IDENTITÀ VISIVA DRAMA — condivisa da tutte le
+   pagine e da tutti i moduli del sito.
+   Vedi la proposta grafica (mockup) per riferimento.
    ============================================ */
 :root {
-  --color-bg: #FAFAF8;
-  --color-surface: #FFFFFF;
-  --color-ink: #1A1A18;
-  --color-ink-muted: #6B6B64;
-  --color-accent: #4B5D52;
-  --color-accent-soft: #E7EBE6;
-  --color-border: #E4E2DD;
-  --color-error: #A6402F;
+  /* Palette Progetto Drama */
+  --pd-viola-drama: #330f7b;
+  --pd-petrolio: #00375b;
+  --pd-celeste: #c4d7fb;
+  --pd-cielo-di-roma: #2f7cff;
+  --pd-senape: #e4b900;
+  --pd-rosso-tovaglia: #ff0100;
+  --pd-verde-sedia: #02746c;
+  --pd-nero: #000000;
+  --pd-bianco: #ffffff;
+  --pd-paper: #f4f1ea;
+
+  /* Token di stile del sito, sulla palette Drama */
+  --color-bg: var(--pd-paper);
+  --color-surface: var(--pd-bianco);
+  --color-ink: var(--pd-nero);
+  --color-ink-muted: rgba(0, 0, 0, 0.62);
+  --color-accent: var(--pd-cielo-di-roma);
+  --color-accent-soft: var(--pd-celeste);
+  --color-border: var(--pd-nero);
+  --color-error: #9c1108;
 
   --font-display: 'Anton', Impact, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-script: 'Permanent Marker', cursive;
 
-  --radius: 3px;
+  --radius: 0;
+  --border-heavy: 2.5px solid var(--pd-nero);
+  --zine-shadow: 6px 6px 0 var(--pd-nero);
 }
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 body {
@@ -38,6 +59,12 @@ h1, h2 {
   font-family: var(--font-display);
   font-weight: 500;
   letter-spacing: -0.01em;
+  text-transform: uppercase;
+  line-height: 0.95;
+}
+
+h1 {
+  color: var(--pd-rosso-tovaglia);
 }
 
 /* Pulsante-link usato dentro testi/etichette per aprire finestre di dettaglio. */
@@ -66,31 +93,82 @@ h1, h2 {
 }
 
 .btn {
-  display: inline-block;
-  padding: 0.6rem 1.25rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--color-accent);
-  font-weight: 600;
-  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 13px 22px;
+  border: var(--border-heavy);
+  cursor: pointer;
   text-decoration: none;
+  white-space: nowrap;
 }
 
-.btn-primario {
-  background: var(--color-accent);
-  color: #fff;
+.btn-primary {
+  background: var(--pd-rosso-tovaglia);
+  color: var(--pd-bianco);
 }
-
-.btn-primario:hover {
+.btn-primary:hover {
   opacity: 0.85;
 }
 
-.btn-secondario {
-  background: transparent;
-  color: var(--color-accent);
+.btn-ghost {
+  background: var(--pd-bianco);
+  color: var(--pd-nero);
+}
+.btn-ghost:hover {
+  background: var(--color-bg);
 }
 
-.btn-secondario:hover {
-  background: var(--color-accent-soft);
+.btn-on-dark {
+  background: transparent;
+  color: var(--pd-bianco);
+  border-color: var(--pd-bianco);
+}
+.btn-on-dark:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Etichetta di sezione con numero rosso, usata per scandire i blocchi
+   della pagina in stile "zine" (es. "02. Il progetto"). */
+.section-label {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.section-num {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--pd-rosso-tovaglia);
+}
+.section-title {
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Link con freccia usato per rimandare a un'altra pagina (es. "Leggi il progetto →"). */
+.link-arrow {
+  display: inline-block;
+  margin-top: 8px;
+  font-weight: 800;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Blocco/card con bordo nero spesso e ombra piatta ("zine"). */
+.card {
+  border: var(--border-heavy);
+  background: var(--pd-bianco);
+}
+.zine-shadow {
+  box-shadow: var(--zine-shadow);
 }
 
 @media (prefers-reduced-motion: reduce) {

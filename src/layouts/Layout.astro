@@ -28,7 +28,18 @@ const voci = [
       <a class="logo" href="/">
         <img src="/logo.png" alt="Progetto Drama" />
       </a>
-      <nav>
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        aria-label="Apri il menu"
+        aria-expanded="false"
+        aria-controls="nav-principale"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="nav-principale">
         <ul>
           {voci.map((voce) => (
             <li><a href={voce.href}>{voce.label}</a></li>
@@ -36,13 +47,15 @@ const voci = [
         </ul>
       </nav>
     </header>
+    <div class="nav-overlay" id="nav-overlay"></div>
 
     <main>
       <slot />
     </main>
 
     <footer class="sito-footer">
-      <p>Progetto Drama APS — Via Giovanni Caselli 39, Roma — C.F. 96653370583</p>
+      <img class="sito-footer__logo" src="/logo.png" alt="Progetto Drama" />
+      <p>Progetto Drama APS — Via Giovanni Caselli 54, Roma — C.F. 96653370583</p>
       <p><a href="/documenti">Statuto, atto costitutivo e informativa privacy</a></p>
     </footer>
 
@@ -62,17 +75,18 @@ const voci = [
         justify-content: space-between;
         gap: 1rem;
         padding: 1rem 1.5rem;
-        border-bottom: 1px solid var(--color-border);
+        background: var(--color-surface);
+        border-bottom: var(--border-heavy);
       }
       .logo img {
         display: block;
-        height: 32px;
+        height: 28px;
         width: auto;
       }
       nav ul {
         display: flex;
         flex-wrap: wrap;
-        gap: 1.25rem;
+        gap: 1.5rem;
         list-style: none;
         margin: 0;
         padding: 0;
@@ -80,11 +94,66 @@ const voci = [
       nav a {
         text-decoration: none;
         color: inherit;
-        font-size: 14px;
-        font-weight: 500;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
       }
       nav a:hover {
-        color: var(--color-accent);
+        color: var(--pd-viola-drama);
+      }
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      .menu-toggle span {
+        display: block;
+        height: 2.5px;
+        background: var(--pd-nero);
+        border-radius: 2px;
+      }
+      .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 40;
+      }
+      @media (max-width: 720px) {
+        .menu-toggle {
+          display: flex;
+        }
+        nav {
+          position: fixed;
+          top: 0;
+          right: -280px;
+          bottom: 0;
+          width: 260px;
+          background: var(--color-surface);
+          border-left: var(--border-heavy);
+          padding: 5rem 1.5rem 2rem;
+          transition: right 0.25s ease;
+          z-index: 50;
+          overflow-y: auto;
+        }
+        nav.aperto {
+          right: 0;
+        }
+        nav ul {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+        .nav-overlay.visibile {
+          display: block;
+        }
       }
       main {
         flex: 1;
@@ -95,18 +164,58 @@ const voci = [
         box-sizing: border-box;
       }
       .sito-footer {
-        padding: 1.5rem;
-        border-top: 1px solid var(--color-border);
+        padding: 2rem 1.5rem;
+        background: var(--pd-nero);
+        color: var(--pd-bianco);
         font-size: 0.85rem;
-        color: var(--color-ink-muted);
         text-align: center;
       }
+      .sito-footer__logo {
+        display: block;
+        height: 20px;
+        width: auto;
+        margin: 0 auto 1rem;
+        filter: invert(1);
+      }
       .sito-footer a {
-        color: var(--color-accent);
+        color: var(--pd-bianco);
       }
       .sito-footer p {
         margin: 0.35rem 0;
+        opacity: 0.8;
       }
     </style>
+
+    <script>
+      const toggle = document.getElementById('menu-toggle');
+      const nav = document.getElementById('nav-principale');
+      const overlay = document.getElementById('nav-overlay');
+
+      function chiudiMenu() {
+        nav?.classList.remove('aperto');
+        overlay?.classList.remove('visibile');
+        toggle?.setAttribute('aria-expanded', 'false');
+      }
+
+      function apriMenu() {
+        nav?.classList.add('aperto');
+        overlay?.classList.add('visibile');
+        toggle?.setAttribute('aria-expanded', 'true');
+      }
+
+      toggle?.addEventListener('click', () => {
+        if (nav?.classList.contains('aperto')) {
+          chiudiMenu();
+        } else {
+          apriMenu();
+        }
+      });
+
+      overlay?.addEventListener('click', chiudiMenu);
+      nav?.querySelectorAll('a').forEach((a) => a.addEventListener('click', chiudiMenu));
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') chiudiMenu();
+      });
+    </script>
   </body>
 </html>

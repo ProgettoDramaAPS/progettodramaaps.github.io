@@ -1,7 +1,9 @@
 ---
 titolo: "Tanto pe' cantà"
 data: 2026-09-19
-luogo: "Bocciofila Parco Caselli — Via Giovanni Caselli 39, Roma 00149"
+orario: "18:00"
+luogo: "Bocciofila Parco Caselli — Via Giovanni Caselli 54, Roma 00149 (dentro il parco, accanto all'area giochi)"
+riassunto: "Karaoke & quiz musicali alla Bocciofila."
 prenotabile: true
 postiMax: 60
 ---
@@ -19,5 +21,5 @@ Si comincia verso le 18 e si va avanti fino a tardi.
 ## Info pratiche
 
 - **Quando:** sabato 19 settembre 2026, dalle 18:00
-- **Dove:** Bocciofila Parco Caselli, Via Giovanni Caselli 39
+- **Dove:** Bocciofila Parco Caselli, Via Giovanni Caselli 54 (dentro il parco, accanto all'area giochi)
 - **Quota:** soci € 10 (consumazione e pizza incluse) · non soci € 15 (consumazione e pizza incluse + tessera)

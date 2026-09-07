@@ -13,8 +13,10 @@ const eventi = defineCollection({
   schema: z.object({
     titolo: z.string(),
     data: z.coerce.date().optional(),
+    orario: z.string().optional(),
     luogo: z.string().optional(),
     immagine: z.string().optional(),
+    riassunto: z.string().optional(),
     prenotabile: z.boolean().optional().default(false),
     postiMax: z.number().int().positive().optional(),
   }),

@@ -1,12 +1,66 @@
 ---
-import { getEntry, render } from 'astro:content';
+import { getEntry } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 
 const pagina = await getEntry('pagine', 'contatti');
-const { Content } = await render(pagina);
 ---
 
 <Layout titolo={pagina.data.titolo}>
   <h1>{pagina.data.titolo}</h1>
-  <Content />
+
+  <p class="dati">
+    Progetto Drama APS<br />
+    Indirizzo sede legale: Via Giovanni Caselli 39, Roma 00149 — Municipio XI<br />
+    C.F. 96653370583
+  </p>
+  <p class="dati">
+    Email: <a href="mailto:progettodrama.aps@gmail.com">progettodrama.aps@gmail.com</a>
+  </p>
+
+  <h2>Dove siamo</h2>
+  <p>
+    Bocciofila Parco Caselli, Via Giovanni Caselli 54, Roma 00149<br />
+    (ci troviamo dentro il parco, accanto all'area giochi).
+  </p>
+  <a
+    class="link-arrow"
+    href="https://maps.app.goo.gl/PuaZBbsH2u98nomK7"
+    target="_blank"
+    rel="noopener"
+  >
+    Google Maps →
+  </a>
+
+  <h2>Come arrivare</h2>
+  <ul class="elenco">
+    <li>Fermata autobus <strong>Majorana/Fornetto</strong> — 100 metri</li>
+    <li>Stazione FS <strong>Roma Trastevere</strong> — 500 metri</li>
+  </ul>
+
+  <h2>Seguici</h2>
+  <ul class="elenco">
+    <li>
+      <a class="link-arrow" href="https://www.instagram.com/progettodrama/" target="_blank" rel="noopener">
+        Instagram →
+      </a>
+    </li>
+    <li>Gruppo WhatsApp — <em>in arrivo</em></li>
+  </ul>
 </Layout>
+
+<style>
+  h2 {
+    margin-top: 40px;
+  }
+  .dati {
+    margin: 0 0 8px;
+  }
+  .elenco {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .elenco li {
+    margin: 0 0 10px;
+  }
+</style>
