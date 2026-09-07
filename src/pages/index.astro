@@ -8,5 +8,40 @@ const { Content } = await render(pagina);
 
 <Layout titolo={pagina.data.titolo}>
   <h1>{pagina.data.titolo}</h1>
-  <Content />
+  <div class="home-intro">
+    <div class="home-testo">
+      <Content />
+    </div>
+    <img
+      class="home-foto"
+      src="/foto/home/lavori-in-corso.jpg"
+      alt="Un lavoro di restauro in corso nel laboratorio della Bocciofila"
+    />
+  </div>
 </Layout>
+
+<style>
+  .home-intro {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1.5rem;
+  }
+  .home-foto {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+  }
+  @media (min-width: 640px) {
+    .home-intro {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+    .home-testo,
+    .home-foto {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+</style>
