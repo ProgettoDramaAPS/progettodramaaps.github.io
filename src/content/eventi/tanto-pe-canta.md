@@ -15,7 +15,7 @@ Sabato 19 settembre torniamo alla Bocciofila per cantare.
 
 È una serata di karaoke e quiz: si sale al microfono — intonati o meno, non ci interessa — e tra una canzone e l'altra si gioca a quiz a squadre, con un premio per chi ne sa di più. Chi non se la sente di cantare fa il pubblico, che è metà del divertimento.
 
-Si comincia verso le 20 e si va avanti fino a tardi.
+Si comincia verso le 20 e si va avanti fino alle 23.30 circa.
 
 È una serata per il quartiere, senza limiti d'età: portate gli amici, i vicini, i genitori. Al Parco Caselli c'è posto per tutti.
 
