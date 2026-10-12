@@ -19,6 +19,8 @@ const eventi = defineCollection({
     riassunto: z.string().optional(),
     prenotabile: z.boolean().optional().default(false),
     postiMax: z.number().int().positive().optional(),
+    // Palette alternativa per la pagina del singolo evento (es. "esoterico": nero e oro).
+    tema: z.enum(['esoterico']).optional(),
   }),
 });
 

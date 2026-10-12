@@ -22,8 +22,8 @@ const oggi = new Date();
 const eventoPassato = entry.data.data ? entry.data.data < oggi : false;
 ---
 
-<Layout titolo={entry.data.titolo}>
-  <p><a href="/eventi">&larr; Tutti gli eventi</a></p>
+<Layout titolo={entry.data.titolo} tema={entry.data.tema}>
+  <p class="indietro"><a href="/eventi">&larr; Tutti gli eventi</a></p>
 
   <h1>{entry.data.titolo}</h1>
   {dataFormattata && <p class="meta">{dataFormattata}</p>}

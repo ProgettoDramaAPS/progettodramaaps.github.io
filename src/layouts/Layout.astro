@@ -3,8 +3,9 @@ import '../styles/global.css';
 
 interface Props {
   titolo: string;
+  tema?: 'esoterico';
 }
-const { titolo } = Astro.props;
+const { titolo, tema } = Astro.props;
 
 const voci = [
   { href: '/', label: 'Home' },
@@ -23,7 +24,7 @@ const voci = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{titolo} — Progetto Drama APS</title>
   </head>
-  <body>
+  <body data-tema={tema}>
     <header class="sito-header">
       <a class="logo" href="/">
         <img src="/logo.png" alt="Progetto Drama" />

@@ -67,6 +67,36 @@ h1 {
   color: var(--pd-rosso-tovaglia);
 }
 
+/* Tema "esoterico" (pagina Soffritto Esoterico): sfondo nero, titoli oro, testo bianco,
+   sottotitoli in grigio chiaro. Cambia solo i token di colore dentro <main>:
+   header e footer restano quelli del sito, e i moduli si adattano da soli. */
+body[data-tema='esoterico'] {
+  --color-bg: var(--pd-nero);
+}
+body[data-tema='esoterico'] main {
+  --pd-oro: #d4af37;
+  --color-surface: var(--pd-nero);
+  --color-ink: var(--pd-bianco);
+  --color-ink-muted: #b3b3b3;
+  --color-border: var(--pd-oro);
+  --color-accent: var(--pd-oro);
+  --color-accent-soft: rgba(212, 175, 55, 0.3);
+  --color-error: #ff7a6e;
+  color: var(--color-ink);
+}
+/* Link "Tutti gli eventi" e pulsante "Prenota": grigio dei sottotitoli, meno accesi dell'oro/bianco. */
+body[data-tema='esoterico'] main .indietro a {
+  color: var(--color-ink-muted);
+}
+body[data-tema='esoterico'] main button[type='submit'] {
+  background: var(--color-ink-muted);
+  color: var(--pd-nero);
+}
+body[data-tema='esoterico'] main h1,
+body[data-tema='esoterico'] main h2 {
+  color: var(--pd-oro);
+}
+
 /* Pulsante-link usato dentro testi/etichette per aprire finestre di dettaglio. */
 .link-btn {
   background: none;

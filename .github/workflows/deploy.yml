@@ -3,6 +3,10 @@ name: Deploy sito su GitHub Pages
 on:
   push:
     branches: [main]
+  # Ripubblica ogni notte (00:30 UTC = 01:30/02:30 a Roma) così gli eventi
+  # passati finiscono da soli nella sezione "Passati".
+  schedule:
+    - cron: "30 0 * * *"
   workflow_dispatch:
 
 permissions:

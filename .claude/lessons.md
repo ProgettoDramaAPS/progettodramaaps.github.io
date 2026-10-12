@@ -62,3 +62,7 @@ invece di interrompere Paolo per ognuna. Se una scelta va rivista, si cambia qui
   prenotazione era stato scritto prima che quella versione esistesse. Aggiornato
   `PrenotazioneForm.astro` per rimandare a quel testo invece della bozza; versione
   accettata registrata come "2.1" nel campo nascosto `informativaVersione`.
+- Sezione eventi passati: titolo cambiato da "Archivio" a "Passati" (richiesta di Paolo, 12/10/2026). "Tanto pe' cantà" (19/9/2026) ci finisce da solo al build, la data è già trascorsa.
+- Ripubblicazione notturna: aggiunto `schedule` (cron 00:30 UTC) in deploy.yml, così gli eventi passano a "Passati" da soli. Attivo solo dopo il push su main (12/10/2026).
+- I campi vuoti obbligatori prendevano il bordo di errore (rosso) senza essere toccati: in Campo.astro `:invalid:not(:placeholder-shown)` scatta sempre perché nessun campo ha placeholder. Corretto solo nel tema esoterico (global.css); la correzione vera in Campo.astro toccherebbe anche /iscrizioni, da chiedere a Paolo (12/10/2026).
+- Bordo rosso dei campi vuoti: rimossa la regola `:invalid` da Campo.astro su richiesta di Paolo, quindi tutti i campi hanno bordo del colore del tema (nero su iscrizioni e Tanto pe' cantà, oro su Soffritto). Rimosso l'override nel tema esoterico, non serve più (12/10/2026).
